@@ -1,4 +1,4 @@
-class siteBuilder {
+class html {
     constructor (runtime) {
         this.runtime = runtime
         this.siteHtml = ""
@@ -6,8 +6,8 @@ class siteBuilder {
     }
     getInfo() {
       return {
-        id: 'sitebuilder',
-        name: 'Site Builder',
+        id: 'HTML',
+        name: 'HTML',
         //colors
         color1: '#FFFFFF',
         color2: '#000000',
@@ -260,4 +260,4 @@ class siteBuilder {
     }
   }
   
-  Scratch.extensions.register(new siteBuilder());
+  Scratch.extensions.register(new html());
