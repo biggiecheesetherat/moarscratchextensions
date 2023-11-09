@@ -151,7 +151,7 @@ class siteBuilder {
             arguments:{
                 value: {
                     type: Scratch.ArgumentType.color,
-                    defaultValue: "#0000ff"
+                    defaultValue: "#002EFF"
                 },
                 type: {
                     type: Scratch.ArgumentType.STRING,
