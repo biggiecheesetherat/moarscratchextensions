@@ -9,7 +9,7 @@ class html {
         id: 'HTML',
         name: 'HTML',
         //colors
-        color1: '#FFFFFF',
+        color1: '#9C4848',
         color2: '#000000',
         blocks: [
           {
