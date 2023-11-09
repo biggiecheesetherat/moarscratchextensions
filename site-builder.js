@@ -11,7 +11,6 @@ class siteBuilder {
         //colors
         color1: 'FFFFFF',
         color2: '#000000',
-        docsURI: 'https://github.com/minidogg/my-penguinmod-extensions/blob/88ff87b8fff13b4e601415d94b201f12c6d475fc/site%20builder/docs/home.md',
         blocks: [
           {
             opcode: 'site',
