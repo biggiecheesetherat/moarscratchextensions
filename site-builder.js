@@ -9,18 +9,10 @@ class siteBuilder {
         id: 'sitebuilder',
         name: 'Site Builder',
         //colors
-        color1: '#7e69beff',
+        color1: '#7e69be',
         color2: '#3a286f',
         docsURI: 'https://github.com/minidogg/my-penguinmod-extensions/blob/88ff87b8fff13b4e601415d94b201f12c6d475fc/site%20builder/docs/home.md',
         blocks: [
-            {
-                blockType: Scratch.BlockType.LABEL,
-                text: "Note: Extension must be unsandboxed to work in its entirety."
-            },
-            {
-                blockType: Scratch.BlockType.LABEL,
-                text: "Advanced Stuffs"
-            },
           {
             opcode: 'site',
             blockType: Scratch.BlockType.REPORTER,
@@ -29,7 +21,7 @@ class siteBuilder {
           {
             opcode: 'setHtml',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Set Site HTML[html]',
+            text: 'Set Site HTML [html]',
             arguments:{
                 html: {
                     type: Scratch.ArgumentType.STRING,
@@ -48,11 +40,6 @@ class siteBuilder {
                 },
             }
           },
-          
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: "Init stuffs"
-        },
         {
             opcode: 'resetHtml',
             blockType: Scratch.BlockType.COMMAND,
@@ -73,10 +60,6 @@ class siteBuilder {
         //     blockType: Scratch.BlockType.COMMAND,
         //     text: 'Update Site Window',
         //   },
-            {
-            blockType: Scratch.BlockType.LABEL,
-            text: "Elements. One new ID per element!"
-        },
           {
             opcode: 'addHeader',
             blockType: Scratch.BlockType.COMMAND,
@@ -120,25 +103,21 @@ class siteBuilder {
             }
           },
           {
-            blockType: Scratch.BlockType.LABEL,
-            text: "Page Modification. Window must be created first!"
-        },
-        {
-            opcode: 'setInnerHtml',
+            opcode: 'addImg',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Set text/innerHTML of elements with selector [type] named [name] to [text]',
+            text: 'Add Image Element URL: [TEXT] ID: [ID] Class: [CLASS]',
             arguments:{
-                name: {
+                TEXT: {
                     type: Scratch.ArgumentType.STRING,
-                    defaultValue: ''
+                    defaultValue: 'https://extensions.turbowarp.org/dango.png'
                   },
-                  text: {
+                  ID: {
                     type: Scratch.ArgumentType.STRING,
                     defaultValue: ""
                   },
-                  type: {
+                  CLASS: {
                     type: Scratch.ArgumentType.STRING,
-                    menu:"selectors"
+                    defaultValue: ""
                   }
             }
           },
@@ -152,12 +131,12 @@ class siteBuilder {
             text: 'Add color style with color [value] to all elements with [type] selector named [name]',
             arguments:{
                 value: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: ""
+                    type: Scratch.ArgumentType.COLOR,
+                    defaultValue: "#ff0000"
                 },
                 type: {
                     type: Scratch.ArgumentType.STRING,
-                    menu:"selectors"
+                    menu: "selectors"
                 },
                 name: {
                     type: Scratch.ArgumentType.STRING,
@@ -171,8 +150,8 @@ class siteBuilder {
             text: 'Add text color style with color [value] to all elements with [type] selector named [name]',
             arguments:{
                 value: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: ""
+                    type: Scratch.ArgumentType.color,
+                    defaultValue: "#0000ff"
                 },
                 type: {
                     type: Scratch.ArgumentType.STRING,
@@ -187,32 +166,12 @@ class siteBuilder {
           {
             opcode: 'addPositionStyle',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Add position style type [posType] [dir] with value [num][numType] to all elements with [type] selector named [name]',
+            text: 'Add CSS [CSS]',
             arguments:{
-                dir: {
+                CSS: {
                     type: Scratch.ArgumentType.STRING,
-                    menu:"dir"
-                },
-                num: {
-                    type: Scratch.ArgumentType.NUMBER,
-                    defaultValue:0
-                },
-                numType:{
-                  type: Scratch.ArgumentType.STRING,
-                  menu:"numType"
-                },
-                type: {
-                    type: Scratch.ArgumentType.STRING,
-                    menu:"selectors"
-                },
-                posType: {
-                  type: Scratch.ArgumentType.STRING,
-                  menu:"posType"
-                },
-                name: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: ""
-                },
+                    defaultValue: "body {text-align: center;}"
+                }
             }
           },
 
@@ -220,11 +179,11 @@ class siteBuilder {
         menus: {
             headers: {
               acceptReporters: true,
-              items: ["big","medium","small","tiny","even tinier","tiniest"]
+              items: ["big","medium","small","tiny"]
             },
             styles: {
                 acceptReporters: true,
-                items: ["big","medium","small","tiny","even tinier","tiniest"]
+                items: ["big","medium","small","tiny"]
             },
             selectors: {
                 acceptReporters: true,
@@ -245,7 +204,6 @@ class siteBuilder {
           }
       };
     }
-    
     temp(){
       return;
     }
@@ -289,7 +247,7 @@ class siteBuilder {
     }
     addPositionStyle(args){
       var items = {"id":"#","class":"."}
-      this.siteHtml += `<style>${items[args.type]}${args.name}{position:${args.posType};${args.dir}:${args.num}${args.numType}}</style>`
+      this.siteHtml += `<style>${args.CSS}}</style>`
   }
     setInnerHtml(args){
         if(args.type = "id"){
