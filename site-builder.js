@@ -9,7 +9,7 @@ class siteBuilder {
         id: 'sitebuilder',
         name: 'Site Builder',
         //colors
-        color1: 'FFFFFF',
+        color1: '#FFFFFF',
         color2: '#000000',
         blocks: [
           {
