@@ -18,6 +18,11 @@ class html {
             text: 'Site HTML'
           },
           {
+            opcode: 'datauri',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Data URI'
+          },
+          {
             opcode: 'setHtml',
             blockType: Scratch.BlockType.COMMAND,
             text: 'Set Site HTML [html]',
@@ -47,7 +52,7 @@ class html {
           {
             opcode: 'openSiteWindow',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Open Site Window',
+            text: 'Open Preview',
           },
         //   {
         //     opcode: 'closeSiteWindow',
