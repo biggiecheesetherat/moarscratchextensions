@@ -102,29 +102,6 @@ class html {
             }
           },
           {
-            opcode: 'addImg',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'Add Image Element URL: [TEXT] ID: [ID] Class: [CLASS]',
-            arguments:{
-                TEXT: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: 'https://extensions.turbowarp.org/dango.png'
-                  },
-                  ID: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: ""
-                  },
-                  CLASS: {
-                    type: Scratch.ArgumentType.STRING,
-                    defaultValue: ""
-                  }
-            }
-          },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: "Styles"
-        },
-          {
             opcode: 'addColorStyle',
             blockType: Scratch.BlockType.COMMAND,
             text: 'Add color style with color [value] to all elements with [type] selector named [name]',
