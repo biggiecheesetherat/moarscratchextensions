@@ -150,7 +150,7 @@ class siteBuilder {
             text: 'Add text color style with color [value] to all elements with [type] selector named [name]',
             arguments:{
                 value: {
-                    type: Scratch.ArgumentType.color,
+                    type: Scratch.ArgumentType.COLOR,
                     defaultValue: "#002EFF"
                 },
                 type: {
