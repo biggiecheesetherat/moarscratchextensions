@@ -186,6 +186,9 @@ class html {
     site() {
       return this.siteHtml;
     }
+    datauri() {
+        return "data:text/html;charset=utf-8," + this.siteHtml;
+    }
     setHtml(args) {
         this.siteHtml = args.html
     }
