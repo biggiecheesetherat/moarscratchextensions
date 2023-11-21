@@ -1,4 +1,4 @@
-class html {
+class siteBuilder {
     constructor (runtime) {
         this.runtime = runtime
         this.siteHtml = ""
@@ -6,26 +6,30 @@ class html {
     }
     getInfo() {
       return {
-        id: 'HTML',
-        name: 'HTML',
+        id: 'sitebuilder',
+        name: 'Site Builder',
         //colors
-        color1: '#9C4848',
-        color2: '#000000',
+        color1: '#9c4848',
+        color2: '#3a286f',
+        docsURI: 'https://github.com/minidogg/my-penguinmod-extensions/blob/88ff87b8fff13b4e601415d94b201f12c6d475fc/site%20builder/docs/home.md',
         blocks: [
+            {
+                blockType: Scratch.BlockType.LABEL,
+                text: "Note: Extension must be unsandboxed to work in its entirety."
+            },
+            {
+                blockType: Scratch.BlockType.LABEL,
+                text: "Advanced Stuffs"
+            },
           {
             opcode: 'site',
             blockType: Scratch.BlockType.REPORTER,
             text: 'Site HTML'
           },
           {
-            opcode: 'datauri',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Data URI'
-          },
-          {
             opcode: 'setHtml',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Set Site HTML [html]',
+            text: 'Set Site HTML[html]',
             arguments:{
                 html: {
                     type: Scratch.ArgumentType.STRING,
@@ -43,6 +47,11 @@ class html {
                     defaultValue:"<p>World</p>"
                 },
             }
+          },
+          
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: "Init stuffs"
         },
         {
             opcode: 'resetHtml',
@@ -52,7 +61,7 @@ class html {
           {
             opcode: 'openSiteWindow',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Open Preview',
+            text: 'Open Site Window',
           },
         //   {
         //     opcode: 'closeSiteWindow',
@@ -64,6 +73,10 @@ class html {
         //     blockType: Scratch.BlockType.COMMAND,
         //     text: 'Update Site Window',
         //   },
+            {
+            blockType: Scratch.BlockType.LABEL,
+            text: "Elements"
+        },
           {
             opcode: 'addHeader',
             blockType: Scratch.BlockType.COMMAND,
@@ -107,17 +120,44 @@ class html {
             }
           },
           {
+            blockType: Scratch.BlockType.LABEL,
+            text: "Page Modification. Window must be created first!"
+        },
+        {
+            opcode: 'setInnerHtml',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'Set text/innerHTML of elements with selector [type] named [name] to [text]',
+            arguments:{
+                name: {
+                    type: Scratch.ArgumentType.STRING,
+                    defaultValue: ''
+                  },
+                  text: {
+                    type: Scratch.ArgumentType.STRING,
+                    defaultValue: ""
+                  },
+                  type: {
+                    type: Scratch.ArgumentType.STRING,
+                    menu:"selectors"
+                  }
+            }
+          },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: "Styles"
+        },
+          {
             opcode: 'addColorStyle',
             blockType: Scratch.BlockType.COMMAND,
             text: 'Add color style with color [value] to all elements with [type] selector named [name]',
             arguments:{
                 value: {
-                    type: Scratch.ArgumentType.COLOR,
+                    type: Scratch.ArgumentType.STRING,
                     defaultValue: "#ff0000"
                 },
                 type: {
                     type: Scratch.ArgumentType.STRING,
-                    menu: "selectors"
+                    menu:"selectors"
                 },
                 name: {
                     type: Scratch.ArgumentType.STRING,
@@ -132,7 +172,7 @@ class html {
             arguments:{
                 value: {
                     type: Scratch.ArgumentType.COLOR,
-                    defaultValue: "#002EFF"
+                    defaultValue: "#ff0000"
                 },
                 type: {
                     type: Scratch.ArgumentType.STRING,
@@ -147,12 +187,12 @@ class html {
           {
             opcode: 'addPositionStyle',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'Add CSS [CSS]',
+            text: 'Add CSS [name]',
             arguments:{
-                CSS: {
+                name: {
                     type: Scratch.ArgumentType.STRING,
-                    defaultValue: "body {text-align: center;}"
-                }
+                    defaultValue: ""
+                },
             }
           },
 
@@ -160,11 +200,11 @@ class html {
         menus: {
             headers: {
               acceptReporters: true,
-              items: ["big","medium","small","tiny"]
+              items: ["big","medium","small","tiny","even tinier","tiniest"]
             },
             styles: {
                 acceptReporters: true,
-                items: ["big","medium","small","tiny"]
+                items: ["big","medium","small","tiny","even tinier","tiniest"]
             },
             selectors: {
                 acceptReporters: true,
@@ -185,14 +225,12 @@ class html {
           }
       };
     }
+    
     temp(){
       return;
     }
     site() {
       return this.siteHtml;
-    }
-    datauri() {
-        return "data:text/html;charset=utf-8," + this.siteHtml;
     }
     setHtml(args) {
         this.siteHtml = args.html
@@ -215,7 +253,7 @@ class html {
         this.siteWindow.document.write(this.siteHtml)
     }
     addHeader(args){
-        var items = {"big":"h1","medium":"h2","small":"h3","tiny":"h4"}
+        var items = {"big":"h1","medium":"h2","small":"h3","tiny":"h4","even tinier":"h5","tiniest":"h6"}
         this.siteHtml += `<${items[args.SIZE]} id="${args.ID}" class="${args.CLASS}">${args.TEXT}</${items[args.SIZE]}>`
     }
     addPara(args){
@@ -230,8 +268,7 @@ class html {
         this.siteHtml += `<style>${items[args.type]}${args.name}{color:${args.value}}</style>`
     }
     addPositionStyle(args){
-      var items = {"id":"#","class":"."}
-      this.siteHtml += `<style>${args.CSS}}</style>`
+      this.siteHtml += `<style>${args.name}</style>`
   }
     setInnerHtml(args){
         if(args.type = "id"){
@@ -245,4 +282,4 @@ class html {
     }
   }
   
-  Scratch.extensions.register(new html());
+  Scratch.extensions.register(new siteBuilder());
