@@ -46,22 +46,22 @@ class html {
                 opcode: 'addJS',
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'Add script [html]',
-                arguments:{
-                    html: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue:"window.alert('Hello World!');"
-                    },
+                arguments: {
+                        html: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue:"window.alert('Hello World!');"
+                        },
                 }
            },
            {
                 opcode: 'addJSFrom',
                 blockType: Scratch.BlockType.COMMAND,
                 text: 'Add script from source [url]',
-                arguments:{
-                    html: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue:"https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-                    },
+                arguments: {
+                        html: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue:"https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+                        },
                 }
            },
         {
